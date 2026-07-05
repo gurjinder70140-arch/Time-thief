@@ -17,7 +17,6 @@ const player={
 
 let keys={};
 let enemies=[];
-let deadEnemies=[];
 
 function spawnEnemy(){
     const side=Math.floor(Math.random()*4);
@@ -37,7 +36,7 @@ function spawnEnemy(){
 }
 
 // Spawn initial enemies
-for(let i=0;i<5;i++) spawnEnemy();
+for(let i=0;i<8;i++) spawnEnemy();
 
 document.addEventListener("keydown",e=>{
     keys[e.key]=true;
@@ -70,13 +69,13 @@ function attack(){
         if(dist<50){
             enemies[i].alive=false;
             kills++;
-            timer+=15;
+            timer+=20;
             
             killsText.innerText=kills;
             timerText.innerText=timer;
             
-            // Spawn new enemy when one is defeated
-            if(Math.random()>0.3) spawnEnemy();
+            // ALWAYS spawn new enemy when one is defeated
+            spawnEnemy();
         }
     }
 }
@@ -108,10 +107,8 @@ function enemyAI(){
         }
     }
     
-    // Clean up dead enemies every few frames
-    if(kills%10===0){
-        enemies=enemies.filter(e=>e.alive);
-    }
+    // Clean up dead enemies periodically
+    enemies=enemies.filter(e=>e.alive);
 }
 
 function draw(){
@@ -146,7 +143,6 @@ function gameLoop(){
     requestAnimationFrame(gameLoop);
 }
 
-let lastTimerUpdate=Date.now();
 setInterval(()=>{
     if(gameActive){
         timer--;
