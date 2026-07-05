@@ -4,16 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Time Thief</title>
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div id="hud">
     <h2>⏳ Time Left: <span id="timer">300</span>s</h2>
-    <h3>👾 Enemies Defeated: <span id="kills">0</span></h3>
+    <h3>👾 Enemies: <span id="kills">0</span></h3>
 </div>
 
+<!-- Desktop Controls -->
 <div id="controls">
     <h3>🎮 CONTROLS</h3>
     <p>Move: <strong>W A S D</strong></p>
@@ -22,19 +23,19 @@
 
 <!-- Mobile Touch Controls -->
 <div id="mobileControls">
-    <button id="btnUp" class="mobile-btn mobile-btn-up">↑</button>
+    <button id="btnUp" class="mobile-btn">↑</button>
     <div id="mobileRow">
-        <button id="btnLeft" class="mobile-btn mobile-btn-left">←</button>
-        <button id="btnDown" class="mobile-btn mobile-btn-down">↓</button>
-        <button id="btnRight" class="mobile-btn mobile-btn-right">→</button>
+        <button id="btnLeft" class="mobile-btn">←</button>
+        <button id="btnDown" class="mobile-btn">↓</button>
+        <button id="btnRight" class="mobile-btn">→</button>
     </div>
     <button id="btnAttack" class="mobile-btn mobile-btn-attack">⚔️ ATTACK</button>
 </div>
 
 <canvas id="game" width="900" height="600"></canvas>
 
-<script src="game.js?v=4"></script>
-<script src="mobile.js?v=4"></script>
+<script src="game.js"></script>
+<script src="mobile.js"></script>
 
 </body>
 </html>
