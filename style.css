@@ -13,6 +13,30 @@ body{
     z-index:100;
 }
 
+#controls{
+    position:absolute;
+    right:20px;
+    top:10px;
+    z-index:100;
+    background:rgba(0,0,0,0.8);
+    padding:15px;
+    border-radius:10px;
+    border:2px solid #00ff00;
+    font-size:12px;
+}
+
+#controls h3{
+    margin:0 0 10px 0;
+    color:#00ff00;
+    text-align:center;
+}
+
+#controls p{
+    margin:5px 0;
+    line-height:1.4;
+    color:#fff;
+}
+
 canvas{
     display:block;
     margin:auto;
