@@ -36,7 +36,15 @@ function spawnEnemy(){
 }
 
 // Spawn initial enemies
-for(let i=0;i<8;i++) spawnEnemy();
+for(let i=0;i<5;i++) spawnEnemy();
+
+// Spawn new enemies continuously every 2 seconds
+setInterval(()=>{
+    if(gameActive && enemies.filter(e=>e.alive).length < 12){
+        spawnEnemy();
+        if(kills>15) spawnEnemy(); // More enemies as you progress
+    }
+}, 2000);
 
 document.addEventListener("keydown",e=>{
     keys[e.key]=true;
@@ -73,9 +81,6 @@ function attack(){
             
             killsText.innerText=kills;
             timerText.innerText=timer;
-            
-            // ALWAYS spawn new enemy when one is defeated
-            spawnEnemy();
         }
     }
 }
@@ -107,8 +112,10 @@ function enemyAI(){
         }
     }
     
-    // Clean up dead enemies periodically
-    enemies=enemies.filter(e=>e.alive);
+    // Clean up dead enemies every few frames
+    if(kills%10===0){
+        enemies=enemies.filter(e=>e.alive);
+    }
 }
 
 function draw(){
@@ -143,6 +150,7 @@ function gameLoop(){
     requestAnimationFrame(gameLoop);
 }
 
+let lastTimerUpdate=Date.now();
 setInterval(()=>{
     if(gameActive){
         timer--;
